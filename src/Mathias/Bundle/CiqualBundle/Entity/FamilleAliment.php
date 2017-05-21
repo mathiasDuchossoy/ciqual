@@ -2,6 +2,9 @@
 
 namespace Mathias\Bundle\CiqualBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * FamilleAliment
  */
@@ -21,7 +24,18 @@ class FamilleAliment
      * @var string
      */
     private $nom;
+    /**
+     * @var Collection
+     */
+    private $aliments;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aliments = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -31,6 +45,16 @@ class FamilleAliment
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
@@ -48,13 +72,13 @@ class FamilleAliment
     }
 
     /**
-     * Get code
+     * Get nom
      *
      * @return string
      */
-    public function getCode()
+    public function getNom()
     {
-        return $this->code;
+        return $this->nom;
     }
 
     /**
@@ -72,37 +96,15 @@ class FamilleAliment
     }
 
     /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $aliments;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->aliments = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Add aliment
      *
-     * @param \Mathias\Bundle\CiqualBundle\Entity\Aliment $aliment
+     * @param Aliment $aliment
      *
      * @return FamilleAliment
      */
-    public function addAliment(\Mathias\Bundle\CiqualBundle\Entity\Aliment $aliment)
+    public function addAliment(Aliment $aliment)
     {
-        $this->aliments[] = $aliment;
+        $this->aliments[] = $aliment->setFamille($this);
 
         return $this;
     }
@@ -110,9 +112,9 @@ class FamilleAliment
     /**
      * Remove aliment
      *
-     * @param \Mathias\Bundle\CiqualBundle\Entity\Aliment $aliment
+     * @param Aliment $aliment
      */
-    public function removeAliment(\Mathias\Bundle\CiqualBundle\Entity\Aliment $aliment)
+    public function removeAliment(Aliment $aliment)
     {
         $this->aliments->removeElement($aliment);
     }
@@ -120,7 +122,7 @@ class FamilleAliment
     /**
      * Get aliments
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection
      */
     public function getAliments()
     {
