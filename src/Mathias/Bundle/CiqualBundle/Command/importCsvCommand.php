@@ -72,7 +72,7 @@ class importCsvCommand extends ContainerAwareCommand
             $aliment
                 ->setCode($ligne[2])
                 ->setNom(utf8_encode($ligne[3]));
-            // on ajoute l'aliment à la famille correspondante
+            // on ajoute l'aliment.yml à la famille correspondante
             $famille->addAliment($aliment);
             // on déclareune variable $j à 0 pour pouvoir récupérer le bon élément nutritif correspondant dans le tableau $elementNutritifs
             $j = 0;
@@ -85,7 +85,7 @@ class importCsvCommand extends ContainerAwareCommand
                     ->setElementNutritif($elementNutritifs->get($j))
                     ->setValeur(utf8_encode($ligne[$i]))
                     ->setAliment($aliment);
-                // on ajoute la nouvelle entité à son aliment correspondant
+                // on ajoute la nouvelle entité à son aliment.yml correspondant
                 $aliment->addAlimentElementNutritif($alimentElementNutritif);
                 // on incrémente $j pour continuer à parcourir le tableau des élements utritifs
                 $j++;

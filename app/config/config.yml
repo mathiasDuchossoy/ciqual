@@ -13,7 +13,7 @@ framework:
     #translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
-        resource: '%kernel.root_dir%/config/routing.yml'
+        resource: '%kernel.root_dir%/config/aliment.yml'
         strict_requirements: ~
     form: ~
     csrf_protection: ~
@@ -68,3 +68,20 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+
+# Assetic Configuration
+assetic:
+    debug:  true
+    use_controller: false
+    filters:
+        cssrewrite: ~
+        lessphp:
+           file: "%kernel.root_dir%/../vendor/oyejorge/less.php/lessc.inc.php"
+           apply_to: ".less$"
+    assets:
+        jquery_js:
+            inputs:
+                - "%kernel.root_dir%/../vendor/components/jquery/jquery.min.js"
+            filters: [?yui_js]
+            output: js/jquery.min.js

@@ -96,7 +96,7 @@ class FamilleAliment
     }
 
     /**
-     * Add aliment
+     * Add aliment.yml
      *
      * @param Aliment $aliment
      *
@@ -110,7 +110,7 @@ class FamilleAliment
     }
 
     /**
-     * Remove aliment
+     * Remove aliment.yml
      *
      * @param Aliment $aliment
      */
