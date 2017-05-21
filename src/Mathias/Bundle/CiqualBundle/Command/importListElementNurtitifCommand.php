@@ -23,7 +23,17 @@ class importListElementNurtitifCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $csv = fgetcsv('D:\projets\ciqual\www\src\Mathias\Table_Ciqual_2016.csv');
-        dump($csv);
+        $connection = $this->getContainer()->get('doctrine')->getConnection();
+
+//        ->query('SHOW TABLES');
+        $fopen = fopen('D:\projets\ciqual\www\src\Mathias\Table_Ciqual_2016.csv' , 'r');
+//        dump($fopen);
+//        die;
+        $premiereLigneArray = fgetcsv($fopen , null, ';');
+        for ($i = 4; $i < sizeof($premiereLigneArray) ; $i++) {
+            echo ($premiereLigneArray[$i]);
+
+        }
+        dump($premiereLigneArray);
     }
 }
