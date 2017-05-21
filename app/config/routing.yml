@@ -1,0 +1,7 @@
+mathias_ciqual:
+    resource: "@MathiasCiqualBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

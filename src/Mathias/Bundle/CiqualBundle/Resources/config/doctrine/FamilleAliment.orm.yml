@@ -1,0 +1,25 @@
+Mathias\Bundle\CiqualBundle\Entity\FamilleAliment:
+    type: entity
+    table: null
+    repositoryClass: Mathias\Bundle\CiqualBundle\Repository\FamilleAlimentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+            options:
+                unsigned: true
+    fields:
+        code:
+            type: string
+            length: '4'
+        nom:
+            type: string
+            length: 255
+    oneToMany:
+        aliments:
+            targetEntity: Mathias\Bundle\CiqualBundle\Entity\Aliment
+            mappedBy: famille
+            cascade: ['persist', 'remove']
+    lifecycleCallbacks: {  }

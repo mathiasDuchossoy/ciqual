@@ -1,0 +1,3 @@
+mathias_ciqual_homepage:
+    path:     /
+    defaults: { _controller: MathiasCiqualBundle:Default:index }
