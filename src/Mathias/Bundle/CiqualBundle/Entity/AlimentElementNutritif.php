@@ -91,19 +91,4 @@ class AlimentElementNutritif
 
         return $this;
     }
-//    /**
-//     * @var integer
-//     */
-//    private $id;
-//
-//
-//    /**
-//     * Get id
-//     *
-//     * @return integer
-//     */
-//    public function getId()
-//    {
-//        return $this->id;
-//    }
 }
