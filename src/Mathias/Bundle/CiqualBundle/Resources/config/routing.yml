@@ -1,3 +1,7 @@
 mathias_ciqual_homepage:
     path:     /
     defaults: { _controller: MathiasCiqualBundle:Default:index }
+
+mathias_ciqual_aliment:
+    resource: "@MathiasCiqualBundle/Resources/config/routing/aliment.yml"
+    prefix:   /aliment

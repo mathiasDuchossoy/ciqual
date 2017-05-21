@@ -21,7 +21,7 @@ class AlimentElementNutritif
     private $valeur;
 
     /**
-     * Get aliment
+     * Get aliment.yml
      *
      * @return Aliment
      */
@@ -31,7 +31,7 @@ class AlimentElementNutritif
     }
 
     /**
-     * Set aliment
+     * Set aliment.yml
      *
      * @param Aliment $aliment
      *

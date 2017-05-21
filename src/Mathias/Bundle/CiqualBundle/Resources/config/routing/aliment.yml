@@ -1,0 +1,3 @@
+mathias_ciqual_aliment_recherche:
+    path:     /recherche
+    defaults: { _controller: MathiasCiqualBundle:Aliment:recherche }
