@@ -80,5 +80,33 @@ class Aliment
     {
         return $this->nom;
     }
-}
+    /**
+     * @var \Mathias\Bundle\CiqualBundle\Entity\FamilleAliment
+     */
+    private $famille;
 
+
+    /**
+     * Set famille
+     *
+     * @param \Mathias\Bundle\CiqualBundle\Entity\FamilleAliment $famille
+     *
+     * @return Aliment
+     */
+    public function setFamille(\Mathias\Bundle\CiqualBundle\Entity\FamilleAliment $famille = null)
+    {
+        $this->famille = $famille;
+
+        return $this;
+    }
+
+    /**
+     * Get famille
+     *
+     * @return \Mathias\Bundle\CiqualBundle\Entity\FamilleAliment
+     */
+    public function getFamille()
+    {
+        return $this->famille;
+    }
+}
