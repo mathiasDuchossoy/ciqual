@@ -2,6 +2,9 @@
 
 namespace Mathias\Bundle\CiqualBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * Aliment
  */
@@ -21,6 +24,22 @@ class Aliment
      * @var string
      */
     private $nom;
+    /**
+     * @var FamilleAliment
+     */
+    private $famille;
+    /**
+     * @var Collection
+     */
+    private $alimentElementNutritifs;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->alimentElementNutritifs = new ArrayCollection();
+    }
 
 
     /**
@@ -31,6 +50,16 @@ class Aliment
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
@@ -48,13 +77,13 @@ class Aliment
     }
 
     /**
-     * Get code
+     * Get nom
      *
      * @return string
      */
-    public function getCode()
+    public function getNom()
     {
-        return $this->code;
+        return $this->nom;
     }
 
     /**
@@ -72,13 +101,61 @@ class Aliment
     }
 
     /**
-     * Get nom
+     * Get famille
      *
-     * @return string
+     * @return FamilleAliment
      */
-    public function getNom()
+    public function getFamille()
     {
-        return $this->nom;
+        return $this->famille;
     }
-}
 
+    /**
+     * Set famille
+     *
+     * @param FamilleAliment $famille
+     *
+     * @return Aliment
+     */
+    public function setFamille(FamilleAliment $famille = null)
+    {
+        $this->famille = $famille;
+
+        return $this;
+    }
+
+    /**
+     * Add alimentElementNutritif
+     *
+     * @param AlimentElementNutritif $alimentElementNutritif
+     *
+     * @return Aliment
+     */
+    public function addAlimentElementNutritif(AlimentElementNutritif $alimentElementNutritif)
+    {
+        $this->alimentElementNutritifs[] = $alimentElementNutritif;
+
+        return $this;
+    }
+
+    /**
+     * Remove alimentElementNutritif
+     *
+     * @param AlimentElementNutritif $alimentElementNutritif
+     */
+    public function removeAlimentElementNutritif(AlimentElementNutritif $alimentElementNutritif)
+    {
+        $this->alimentElementNutritifs->removeElement($alimentElementNutritif);
+    }
+
+    /**
+     * Get alimentElementNutritifs
+     *
+     * @return Collection
+     */
+    public function getAlimentElementNutritifs()
+    {
+        return $this->alimentElementNutritifs;
+    }
+
+}

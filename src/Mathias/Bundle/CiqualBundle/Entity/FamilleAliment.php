@@ -2,6 +2,9 @@
 
 namespace Mathias\Bundle\CiqualBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * FamilleAliment
  */
@@ -21,7 +24,18 @@ class FamilleAliment
      * @var string
      */
     private $nom;
+    /**
+     * @var Collection
+     */
+    private $aliments;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aliments = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -31,6 +45,16 @@ class FamilleAliment
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
@@ -48,13 +72,13 @@ class FamilleAliment
     }
 
     /**
-     * Get code
+     * Get nom
      *
      * @return string
      */
-    public function getCode()
+    public function getNom()
     {
-        return $this->code;
+        return $this->nom;
     }
 
     /**
@@ -72,13 +96,36 @@ class FamilleAliment
     }
 
     /**
-     * Get nom
+     * Add aliment
      *
-     * @return string
+     * @param Aliment $aliment
+     *
+     * @return FamilleAliment
      */
-    public function getNom()
+    public function addAliment(Aliment $aliment)
     {
-        return $this->nom;
+        $this->aliments[] = $aliment->setFamille($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove aliment
+     *
+     * @param Aliment $aliment
+     */
+    public function removeAliment(Aliment $aliment)
+    {
+        $this->aliments->removeElement($aliment);
+    }
+
+    /**
+     * Get aliments
+     *
+     * @return Collection
+     */
+    public function getAliments()
+    {
+        return $this->aliments;
     }
 }
-

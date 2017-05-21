@@ -21,4 +21,9 @@ Mathias\Bundle\CiqualBundle\Entity\Aliment:
         famille:
             targetEntity: Mathias\Bundle\CiqualBundle\Entity\FamilleAliment
             inversedBy: aliments
+    oneToMany:
+        alimentElementNutritifs:
+            targetEntity: Mathias\Bundle\CiqualBundle\Entity\AlimentElementNutritif
+            mappedBy: aliment
+            cascade: ['persist']
     lifecycleCallbacks: {  }

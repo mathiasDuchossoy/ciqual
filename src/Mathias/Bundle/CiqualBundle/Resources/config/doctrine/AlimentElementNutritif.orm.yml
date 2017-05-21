@@ -1,0 +1,20 @@
+Mathias\Bundle\CiqualBundle\Entity\AlimentElementNutritif:
+    type: entity
+    table: null
+    repositoryClass: Mathias\Bundle\CiqualBundle\Repository\AlimentElementNutritifRepository
+    id:
+        aliment:
+            associationKey: true
+        elementNutritif:
+            associationKey: true
+    fields:
+        valeur:
+            type: string
+            length: 255
+    manyToOne:
+        aliment:
+            targetEntity: Mathias\Bundle\CiqualBundle\Entity\Aliment
+            inversedBy: alimentElementNutritifs
+        elementNutritif:
+            targetEntity: Mathias\Bundle\CiqualBundle\Entity\ElementNutritif
+    lifecycleCallbacks: {  }
