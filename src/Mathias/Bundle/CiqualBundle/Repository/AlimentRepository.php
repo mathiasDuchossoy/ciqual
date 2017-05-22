@@ -10,4 +10,13 @@ namespace Mathias\Bundle\CiqualBundle\Repository;
  */
 class AlimentRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByLike($like)
+    {
+        $q = $this->createQueryBuilder('aliment')
+            ->select('aliment.id, aliment.nom text')
+            ->where('aliment.nom LIKE :val')
+            ->setParameter('val', '%' . $like . '%');
+
+        return $q->getQuery()->getResult();
+    }
 }
