@@ -2,6 +2,7 @@ Mathias\Bundle\CiqualBundle\Entity\AlimentElementNutritif:
     type: entity
     table: null
     repositoryClass: Mathias\Bundle\CiqualBundle\Repository\AlimentElementNutritifRepository
+    # l'id 'id' ne sert à rien dans ce cas, on doit utiliser la combinaison des deux entités afin de gagner en vitesse
     id:
         aliment:
             associationKey: true

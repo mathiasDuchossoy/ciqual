@@ -2,6 +2,7 @@ mathias_ciqual_homepage:
     path:     /
     defaults: { _controller: MathiasCiqualBundle:Default:index }
 
+# j'ai regroupé toute les routes concernant les aliments dans un même fichier afin d'éviter de se mélanger avec d'autres entités que l'on pourrait décider de "controler"
 mathias_ciqual_aliment:
     resource: "@MathiasCiqualBundle/Resources/config/routing/Aliment.yml"
     prefix:   /aliment

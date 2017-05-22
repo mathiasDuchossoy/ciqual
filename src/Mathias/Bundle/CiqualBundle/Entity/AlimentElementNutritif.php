@@ -68,6 +68,11 @@ class AlimentElementNutritif
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getValeur();
+    }
+
     /**
      * Get valeur
      *

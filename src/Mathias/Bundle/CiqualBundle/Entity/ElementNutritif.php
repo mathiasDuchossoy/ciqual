@@ -28,6 +28,11 @@ class ElementNutritif
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
     /**
      * Get nom
      *

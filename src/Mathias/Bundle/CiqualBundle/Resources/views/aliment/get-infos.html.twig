@@ -1,0 +1,10 @@
+<h3>{{ aliment }} (code: {{ aliment.code }}) <span class="label label-default">{{ aliment.famille }}
+        (code: {{ aliment.famille.code }})</span></h3>
+<table class="table table-striped">
+    {% for alimentElementNutritif in aliment.alimentElementNutritifs %}
+        <tr>
+            <td>{{ alimentElementNutritif.elementNutritif }}</td>
+            <td>{{ alimentElementNutritif }}</td>
+        </tr>
+    {% endfor %}
+</table>
