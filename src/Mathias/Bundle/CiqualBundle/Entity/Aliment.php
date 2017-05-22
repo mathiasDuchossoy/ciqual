@@ -77,30 +77,6 @@ class Aliment
     }
 
     /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Aliment
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
      * Get famille
      *
      * @return FamilleAliment
@@ -156,6 +132,35 @@ class Aliment
     public function getAlimentElementNutritifs()
     {
         return $this->alimentElementNutritifs;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Aliment
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
     }
 
 }

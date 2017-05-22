@@ -72,30 +72,6 @@ class FamilleAliment
     }
 
     /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return FamilleAliment
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
      * Add aliment.yml
      *
      * @param Aliment $aliment
@@ -127,5 +103,34 @@ class FamilleAliment
     public function getAliments()
     {
         return $this->aliments;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return FamilleAliment
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
     }
 }

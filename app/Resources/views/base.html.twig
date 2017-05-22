@@ -2,15 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Ciqual{% endblock %}</title>
     {% block stylesheets %}
         {% stylesheets 'css/bootstrap.css' 'css/select2.css' %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
     {% endblock %}
-    {% if form is defined %}
-        {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
-    {% endif %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>

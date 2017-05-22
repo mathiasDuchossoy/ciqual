@@ -10,6 +10,12 @@ namespace Mathias\Bundle\CiqualBundle\Repository;
  */
 class AlimentRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $like
+     * @return array
+     * cette fonction sert à chercher les aliment dont le nom contient la chaîne de caractère passé en paramètre
+     * un tableau sous la forme [id, text] est renvoyé
+     */
     public function findByLike($like)
     {
         $q = $this->createQueryBuilder('aliment')

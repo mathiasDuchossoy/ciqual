@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi: ~
@@ -121,6 +121,7 @@ assetic:
             inputs:
               - "%%kernel.root_dir%/../vendor/ivaynberg/select2/dist/js/select2.full.js"
               - "%%kernel.root_dir%/../vendor/ivaynberg/select2/dist/js/select2.js"
+              - "%%kernel.root_dir%/../vendor/ivaynberg/select2/dist/js/i18n/fr.js"
             filters: [?yui_js]
             output: js/select2.js
         select2_css:
