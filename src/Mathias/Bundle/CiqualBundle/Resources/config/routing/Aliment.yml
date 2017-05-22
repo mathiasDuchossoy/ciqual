@@ -1,0 +1,8 @@
+mathias_ciqual_aliment_recherche:
+    path:     /recherche
+    defaults: { _controller: MathiasCiqualBundle:Aliment:recherche }
+
+mathias_ciqual_aliment_get_like:
+    path:   /rechercheajax/{like}
+    defaults: { _controller: MathiasCiqualBundle:Aliment:getLike }
+    methods: GET

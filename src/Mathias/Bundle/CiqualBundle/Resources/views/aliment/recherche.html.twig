@@ -1,4 +1,31 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-
+    <div class="form-group">
+        <label for="sel1">Select aliment:</label>
+        <select class="form-control rechercherAliment" id="selectAliment">
+        </select>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(".rechercherAliment").select2({
+            width: '100%',
+            ajax: {
+                url: function (params) {
+                    var path = '{{ path('mathias_ciqual_aliment_get_like' , {'like' : '_like_'} ) }}';
+                    return path.replace(/_like_/g, params.term);
+                },
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            },
+            minimumInputLength: 3
+        });
+    </script>
 {% endblock %}
