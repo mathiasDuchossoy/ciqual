@@ -25,12 +25,14 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
+        // on met l'objet select dans une variable
         var $alimentSelect = $("#alimentSelect");
+        // on active le select2 pour le select
         $alimentSelect.select2({
             language: 'fr',
-            width: '100%',
             ajax: {
                 url: function (params) {
+                    // récupération de l'url pour la recherche
                     var path = '{{ path('mathias_ciqual_aliment_get_like' , {'like' : '_like_'} ) }}';
                     return path.replace(/_like_/g, params.term);
                 },
@@ -43,14 +45,18 @@
                 },
                 cache: true
             },
+            // nombre minimum de caractere à envoyer pour executer la requete de recherche
             minimumInputLength: 3
         });
+        // traitement de l'évênement lorsque qu'un aliment est choisis
         $alimentSelect.on("select2:select", function (e) {
+            // récupération de l'url qui permet d'accèder aux infos de l'aliment
             var path = '{{ path('mathias_ciqual_aliment_get_infos' , {'id' :  '_id_'}) }}';
             path = path.replace(/_id_/g, e.params.data.id);
             $.ajax(path).done(function (data) {
+                // on met directement le html dans le corps du panel
                 $('#alimentInfos').html(data);
-            })
+            });
         });
     </script>
 {% endblock %}

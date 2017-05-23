@@ -65,6 +65,8 @@ class importCsvCommand extends ContainerAwareCommand
                 $famille
                     ->setCode($ligne[0])
                     ->setNom(utf8_encode($ligne[1]));
+                // on ajoute la famille au tableau pour pouvoir vérifier s'il n'a pas été déjà été créé
+                $familles->add($famille);
             }
             // on cré une nouvelle entitée Aliment
             $aliment = new Aliment();
@@ -95,8 +97,6 @@ class importCsvCommand extends ContainerAwareCommand
             // on enregistre les données persisté en base de données, on pourrait n'en faire qu'un seul à la fin
             // mais je souhaitais voir l'apparition des données au fils de l'eau
             $em->flush();
-            // on ajoute la famille au tableau pour pouvoir vérifier s'il n'a pas été déjà été créé
-            $familles->add($famille);
         }
         // on pourrait faire un seul flush général
         // $em->flush();
