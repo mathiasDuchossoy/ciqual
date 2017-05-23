@@ -6,14 +6,14 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
-        resource: '%kernel.root_dir%/config/routing.yml'
+        resource: '%kernel.root_dir%/config/aliment.yml'
         strict_requirements: ~
     form: ~
     csrf_protection: ~
@@ -68,3 +68,63 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+
+# Assetic Configuration
+assetic:
+    debug:  true
+    use_controller: false
+    filters:
+        cssrewrite: ~
+        lessphp:
+           file: "%kernel.root_dir%/../vendor/oyejorge/less.php/lessc.inc.php"
+           apply_to: ".less$"
+    assets:
+        jquery_js:
+            inputs:
+                - "%kernel.root_dir%/../vendor/components/jquery/jquery.min.js"
+            filters: [?yui_js]
+            output: js/jquery.min.js
+        bootstrap_js:
+           inputs:
+               - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/js/bootstrap.min.js"
+           filters: [?yui_js]
+           output: js/bootstrap.js
+        bootstrap_css:
+           inputs:
+               - "%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less"
+           filters:
+               - lessphp
+               - cssrewrite
+           output: css/bootstrap.css
+        bootstrap_glyphicons_ttf:
+           inputs:
+               - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf"
+           output: "fonts/glyphicons-halflings-regular.ttf"
+        bootstrap_glyphicons_eot:
+           inputs:
+               - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.eot"
+           output: "fonts/glyphicons-halflings-regular.eot"
+        bootstrap_glyphicons_svg:
+           inputs:
+               - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.svg"
+           output: "fonts/glyphicons-halflings-regular.svg"
+        bootstrap_glyphicons_woff:
+           inputs:
+               - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.woff"
+           output: "fonts/glyphicons-halflings-regular.woff"
+        bootstrap_glyphicons_woff2:
+           inputs:
+               - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"
+           output: "fonts/glyphicons-halflings-regular.woff2"
+        select2_js:
+            inputs:
+              - "%%kernel.root_dir%/../vendor/ivaynberg/select2/dist/js/select2.full.js"
+              - "%%kernel.root_dir%/../vendor/ivaynberg/select2/dist/js/select2.js"
+              - "%%kernel.root_dir%/../vendor/ivaynberg/select2/dist/js/i18n/fr.js"
+            filters: [?yui_js]
+            output: js/select2.js
+        select2_css:
+            inputs:
+              - "%%kernel.root_dir%/../vendor/ivaynberg/select2/dist/css/select2.css"
+            output: css/select2.css

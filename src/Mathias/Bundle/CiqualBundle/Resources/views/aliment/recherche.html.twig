@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <section>
+        <h1>
+            Aliment
+        </h1>
+    </section>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="form-group" style="margin-bottom: 30px">
+                    <label class="col-sm-3 control-label" for="alimentSelect">Rechercher un aliment:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="alimentSelect">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="alimentInfos">
+                Informations sur l'aliment choisis.
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        // on met l'objet select dans une variable
+        var $alimentSelect = $("#alimentSelect");
+        // on active le select2 pour le select
+        $alimentSelect.select2({
+            language: 'fr',
+            ajax: {
+                url: function (params) {
+                    // récupération de l'url pour la recherche
+                    var path = '{{ path('mathias_ciqual_aliment_get_like' , {'like' : '_like_'} ) }}';
+                    return path.replace(/_like_/g, params.term);
+                },
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            },
+            // nombre minimum de caractere à envoyer pour executer la requete de recherche
+            minimumInputLength: 3
+        });
+        // traitement de l'évênement lorsque qu'un aliment est choisis
+        $alimentSelect.on("select2:select", function (e) {
+            // récupération de l'url qui permet d'accèder aux infos de l'aliment
+            var path = '{{ path('mathias_ciqual_aliment_get_infos' , {'id' :  '_id_'}) }}';
+            path = path.replace(/_id_/g, e.params.data.id);
+            $.ajax(path).done(function (data) {
+                // on met directement le html dans le corps du panel
+                $('#alimentInfos').html(data);
+            });
+        });
+    </script>
+{% endblock %}
